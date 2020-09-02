@@ -1,0 +1,16 @@
+{
+    "name": "serverinfo",
+    "permissions": "NONE",
+    "restriction": "1",
+    "_id": "qLUlf",
+    "actions": [
+      {
+        "behavior": "0",
+        "interpretation": "1",
+        "code": "const { MessageEmbed } = require('discord.js');\nconst moment = require('moment');\n\nconst filterLevels = {\n    DISABLED: 'Off',\n    MEMBERS_WITHOUT_ROLES: 'No Role',\n    ALL_MEMBERS: 'Everyone'\n};\nconst verificationLevels = {\n    NONE: 'None',\n    LOW: 'Low',\n    MEDIUM: 'Medium',\n    HIGH: '(╯°□°）╯︵ ┻━┻',\n    VERY_HIGH: '┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻'\n};\nconst regions = {\n    brazil: 'Brazil',\n    europe: 'Europe',\n    hongkong: 'Hong Kong',\n    india: 'India',\n    japan: 'Japan',\n    russia: 'Russia',\n    singapore: 'Singapore',\n    southafrica: 'South Africa',\n    sydney: 'Sydney',\n    'us-central': 'US Central',\n    'us-east': 'US East',\n    'us-west': 'US West',\n    'us-south': 'US South'\n};\n\nconst roles = msg.guild.roles.cache.sort((a, b) => b.position - a.position).map(role => role.toString());\n        const members = msg.guild.members.cache;\n        const channels = msg.guild.channels.cache;\n        const emojis = msg.guild.emojis.cache;\n\n        const embed = new MessageEmbed()\n            .setDescription(`**Guild information for __${msg.guild.name}__**`)\n            .setColor(msg.member.hexColor || 'BLUE')\n            .setThumbnail(msg.guild.iconURL({ dynamic: true}))\n            .addField('General', [\n                `**❯ Name: ** ${msg.guild.name}`,\n                `**❯ ID: ** ${msg.guild.id}`,\n                `**❯ Owner: ** ${msg.guild.owner.user.tag} - ${msg.guild.ownerID}`,\n                `**❯ Region: ** ${regions[msg.guild.region]}`,\n                `**❯ Boost Tier: ** ${msg.guild.premiumTier ? `Tier ${msg.guild.premiumTier}` : 'None'}`,\n                `**❯ Explicit Filter: ** ${filterLevels[msg.guild.explicitContentFilter]}`,\n                `**❯ verification Level: ** ${verificationLevels[msg.guild.verificationLevel]}`,\n                `**❯ Time Created: ** ${moment(msg.guild.createdTimestamp).format('LT')} ${moment(msg.guild.createdTimestamp).format('LL')} ${moment(msg.guild.createdTimestamp).fromNow()}`,\n                '\\u200b'\n\n            ])\n            .addField('Statistics', [\n                `**❯ Role Count: ** ${roles.length}`,\n                `**❯ Emoji Count: ** ${emojis.size}`,\n                `**❯ Regular Emoji Count: ** ${emojis.filter(emoji => !emoji.animated).size}`,\n                `**❯ Animated Emoji Count: ** ${emojis.filter(emoji => emoji.animated).size}`,\n                `**❯ Member Count: ** ${msg.guild.memberCount}`,\n                `**❯ Text Channels: ** ${channels.filter(channel => channel.type === 'text').size}`,\n                `**❯ Voice Channels: ** ${channels.filter(channel => channel.type === 'voice').size}`,\n                `**❯ Boost Count: ** ${msg.guild.premiumSubscriptionCount || '0'}`,\n            ])\n            .setTimestamp();\n        msg.channel.send(embed);",
+        "storage": "0",
+        "varName": "",
+        "name": "Run Script"
+      }
+    ]
+  }
