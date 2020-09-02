@@ -1,0 +1,23 @@
+{
+    "connect": {
+        "command": "connect",
+        "description": "connect",
+        "usage": "&connect"
+    },
+    "CMD_Name1": {
+        "description": "Description",
+        "usage": "Usage"
+    },
+    "CMD_Name2": {
+        "description": "Description",
+        "usage": "Usage"
+    },
+    "CMD_Name3": {
+        "description": "Description",
+        "usage": "Usage"
+    },
+    "CMD_Name4": {
+        "description": "Description",
+        "usage": "Usage"
+    }
+}
